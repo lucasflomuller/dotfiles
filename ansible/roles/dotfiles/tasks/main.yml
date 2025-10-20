@@ -15,7 +15,7 @@
   when: chezmoi_source_check.stat.exists
 
 - name: "🏠 Apply dotfiles with chezmoi"
-  shell: "chezmoi apply"
+  shell: "chezmoi apply --force"
 
 - name: "🔧 Verify chezmoi status"
   shell: "chezmoi status"
