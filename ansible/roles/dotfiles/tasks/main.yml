@@ -11,7 +11,7 @@
   when: not chezmoi_source_check.stat.exists
 
 - name: "🔄 Update chezmoi source (git pull)"
-  shell: "chezmoi update --no-apply"
+  shell: "chezmoi git pull"
   when: chezmoi_source_check.stat.exists
 
 - name: "🏠 Apply dotfiles with chezmoi"
