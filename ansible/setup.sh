@@ -48,7 +48,19 @@ install_ansible() {
 
     case $OS in
         "macos")
-            if ! command -v brew &> /dev/null; then
+            # Check if Homebrew is installed (check for binary file existence)
+            BREW_EXISTS=false
+            if [[ -f "/opt/homebrew/bin/brew" ]]; then
+                eval "$(/opt/homebrew/bin/brew shellenv)"
+                BREW_EXISTS=true
+                log "Found Homebrew at /opt/homebrew/bin/brew"
+            elif [[ -f "/usr/local/bin/brew" ]]; then
+                eval "$(/usr/local/bin/brew shellenv)"
+                BREW_EXISTS=true
+                log "Found Homebrew at /usr/local/bin/brew"
+            fi
+
+            if [[ "$BREW_EXISTS" == "false" ]]; then
                 log "Installing Homebrew..."
                 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -66,7 +78,10 @@ install_ansible() {
                 fi
 
                 success "Homebrew installed and added to PATH"
+            else
+                success "Homebrew is already installed"
             fi
+
             brew install ansible
             ;;
         "arch")
