@@ -30,16 +30,24 @@
   when: ansible_system == "Darwin"
 
 - name: "🔍 Check if chezmoi is already installed"
-  stat:
-    path: "{{ chezmoi_bin_path }}"
+  command: which chezmoi
   register: chezmoi_check
+  failed_when: false
+  changed_when: false
 
-- name: "📥 Install chezmoi"
+- name: "📥 Install chezmoi (macOS via Homebrew)"
+  homebrew:
+    name: chezmoi
+    state: present
+  when: ansible_system == "Darwin" and chezmoi_check.rc != 0
+
+- name: "📥 Install chezmoi (Arch Linux)"
+  package:
+    name: chezmoi
+    state: present
+  become: yes
+  when: ansible_pkg_mgr == "pacman" and chezmoi_check.rc != 0
+
+- name: "📥 Install chezmoi (fallback - curl script)"
   shell: sh -c "$(curl -fsLS get.chezmoi.io)"
-  when: not chezmoi_check.stat.exists
-
-- name: "🔧 Ensure chezmoi is executable"
-  file:
-    path: "{{ chezmoi_bin_path }}"
-    mode: '0755'
-  when: chezmoi_check.stat.exists or not chezmoi_check.stat.exists
+  when: ansible_system != "Darwin" and ansible_pkg_mgr != "pacman" and chezmoi_check.rc != 0
