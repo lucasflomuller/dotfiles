@@ -72,4 +72,4 @@ Thumbs.db
 **/omarchy/**/.git/
 
 # Neovim symlinked theme (Arch-specific)
-.config/nvim/lua/plugins/symlink_theme.lua
+.config/nvim/lua/plugins/theme.lua
