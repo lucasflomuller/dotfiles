@@ -4,11 +4,11 @@
 - name: "📦 Include OS-specific package installation tasks"
   include_tasks: "{{ ansible_distribution | lower }}.yml"
 
-- name: "🔧 Update package cache"
+- name: "🔧 Update package cache (Linux)"
   package:
     update_cache: yes
-  become: "{{ should_become }}"
-  when: ansible_pkg_mgr != 'brew'
+  become: yes
+  when: ansible_system == 'Linux' and ansible_pkg_mgr != 'brew'
 
 - name: "🍺 Update Homebrew (macOS)"
   homebrew:
