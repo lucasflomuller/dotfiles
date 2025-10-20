@@ -51,6 +51,21 @@ install_ansible() {
             if ! command -v brew &> /dev/null; then
                 log "Installing Homebrew..."
                 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+                # Add Homebrew to PATH for current session
+                if [[ -f "/opt/homebrew/bin/brew" ]]; then
+                    eval "$(/opt/homebrew/bin/brew shellenv)"
+                elif [[ -f "/usr/local/bin/brew" ]]; then
+                    eval "$(/usr/local/bin/brew shellenv)"
+                fi
+
+                # Verify brew is now available
+                if ! command -v brew &> /dev/null; then
+                    error "Homebrew installation failed or brew command not found in PATH"
+                    exit 1
+                fi
+
+                success "Homebrew installed and added to PATH"
             fi
             brew install ansible
             ;;
