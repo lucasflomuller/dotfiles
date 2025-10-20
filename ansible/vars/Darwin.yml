@@ -55,12 +55,7 @@ desktop_packages:
 
 # GUI applications (casks)
 desktop_casks:
-  - signal
   - obsidian
-  - roam-research
-  - firefox
-  - chromium
-  - libreoffice
   - the-unarchiver
   - raycast
 
