@@ -7,26 +7,18 @@
   register: chezmoi_source_check
 
 - name: "📥 Initialize chezmoi with dotfiles repository"
-  shell: "{{ chezmoi_bin_path }} init {{ chezmoi_repo }}"
-  environment:
-    PATH: "{{ ansible_user_dir }}/bin:{{ ansible_env.PATH }}"
+  shell: "chezmoi init {{ chezmoi_repo }}"
   when: not chezmoi_source_check.stat.exists
 
 - name: "🔄 Update chezmoi source (git pull)"
-  shell: "{{ chezmoi_bin_path }} update --no-apply"
-  environment:
-    PATH: "{{ ansible_user_dir }}/bin:{{ ansible_env.PATH }}"
+  shell: "chezmoi update --no-apply"
   when: chezmoi_source_check.stat.exists
 
 - name: "🏠 Apply dotfiles with chezmoi"
-  shell: "{{ chezmoi_bin_path }} apply"
-  environment:
-    PATH: "{{ ansible_user_dir }}/bin:{{ ansible_env.PATH }}"
+  shell: "chezmoi apply"
 
 - name: "🔧 Verify chezmoi status"
-  shell: "{{ chezmoi_bin_path }} status"
-  environment:
-    PATH: "{{ ansible_user_dir }}/bin:{{ ansible_env.PATH }}"
+  shell: "chezmoi status"
   register: chezmoi_status
   changed_when: false
 
