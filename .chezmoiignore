@@ -70,3 +70,6 @@ Thumbs.db
 # Git repositories (don't sync nested repos)
 **/nvm/**/.git/
 **/omarchy/**/.git/
+
+# Neovim symlinked theme (Arch-specific)
+.config/nvim/lua/plugins/symlink_theme.lua
