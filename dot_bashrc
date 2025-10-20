@@ -105,10 +105,10 @@ echo "🚀 Bash with shared aliases loaded!"
 echo "💡 Try: z <dir>, bat <file>, or use any of the configured aliases"
 
 # pnpm
-export PNPM_HOME="/home/lucas/.local/share/pnpm"
+export PNPM_HOME="/Users/lucasmuller/.local/share/pnpm"
 case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
@@ -119,7 +119,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-export RIPGREP_CONFIG_PATH="/home/lucas/.ripgreprc"
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 export EDITOR="nvm --remote-silent"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 eval "$(tmuxifier init -)"
