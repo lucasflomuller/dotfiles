@@ -69,7 +69,7 @@ desktop_casks:
 font_packages:
   - font-noto-sans
   - font-noto-emoji
-  - font-cascadia-mono-nerd-font
+  - font-caskaydia-cove-nerd-font
   - font-jetbrains-mono-nerd-font
   - font-ia-writer-mono
   - font-fontawesome
