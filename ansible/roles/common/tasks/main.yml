@@ -51,3 +51,22 @@
 - name: "📥 Install chezmoi (fallback - curl script)"
   shell: sh -c "$(curl -fsLS get.chezmoi.io)"
   when: ansible_system != "Darwin" and ansible_pkg_mgr != "pacman" and chezmoi_check.rc != 0
+
+- name: "🔍 Check if NVM is already installed"
+  stat:
+    path: "{{ ansible_user_dir }}/.nvm/nvm.sh"
+  register: nvm_check
+
+- name: "📦 Install NVM"
+  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+  when: not nvm_check.stat.exists
+
+- name: "📦 Install Node.js via NVM"
+  shell: |
+    export NVM_DIR="{{ ansible_user_dir }}/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm install node
+    nvm use node
+  args:
+    executable: /bin/bash
+  when: not nvm_check.stat.exists
