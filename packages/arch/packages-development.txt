@@ -1,0 +1,43 @@
+# Development tools
+git
+github-cli
+git-delta
+neovim
+vim
+docker
+docker-buildx
+docker-compose
+rust
+clang
+gcc14
+llvm
+mise
+tmux
+starship
+ripgrep
+fd
+fzf
+jq
+bat
+eza
+dust
+lazygit
+lazydocker
+gum
+tree-sitter-cli
+luarocks
+python-pynvim
+python-poetry-core
+tldr
+zoxide
+fastfetch
+
+# Database libraries
+mariadb-libs
+postgresql-libs
+
+# System monitoring
+btop
+
+# Docker security
+ufw-docker

@@ -1,0 +1,42 @@
+# Desktop applications for macOS
+# Terminal
+alacritty
+# Alternative: iterm2 (cask)
+
+# Password management
+1password-cli
+# Note: 1password app available via Mac App Store or cask
+
+# Communication & productivity
+# signal-desktop (available as cask)
+# obsidian (available as cask)
+# roam-research (available as cask)
+
+# Media and graphics
+mpv
+imagemagick
+ffmpeg  # includes ffmpegthumbnailer functionality
+
+# Fonts and typography
+font-cascadia-mono-nerd-font
+font-jetbrains-mono-nerd-font
+font-ia-writer-mono
+font-fontawesome
+
+# Clipboard and utilities
+# pbcopy/pbpaste are built-in on macOS
+wl-clipboard  # For consistency, though macOS has native clipboard
+
+# File management and preview
+# Finder is built-in, but for consistency:
+# ranger  # Terminal file manager alternative
+
+# Printing (if needed)
+# CUPS is built-in on macOS
+
+# Package managers and app stores
+brew  # Should already be installed
+# mas (for Mac App Store)
+
+# Audio (Core Audio is built-in, but for development)
+# No pipewire needed - macOS has Core Audio

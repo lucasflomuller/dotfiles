@@ -1,0 +1,27 @@
+# Essential system packages - work on any Arch system
+base
+base-devel
+linux
+linux-firmware
+linux-headers
+amd-ucode
+efibootmgr
+limine
+limine-mkinitcpio-hook
+btrfs-progs
+snapper
+iwd
+tailscale
+pacman-contrib
+yay
+man-db
+less
+unzip
+lsof
+tree
+whois
+plocate
+ufw
+fontconfig
+noto-fonts
+noto-fonts-emoji

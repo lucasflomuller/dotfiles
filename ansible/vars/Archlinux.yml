@@ -1,0 +1,185 @@
+---
+# Arch Linux package configuration
+os_name: "Arch Linux"
+package_manager: "pacman"
+
+# Essential packages from our categorization
+essential_packages:
+  - base
+  - base-devel
+  - linux
+  - linux-firmware
+  - linux-headers
+  - amd-ucode
+  - efibootmgr
+  - limine
+  - limine-mkinitcpio-hook
+  - btrfs-progs
+  - snapper
+  - iwd
+  - tailscale
+  - pacman-contrib
+  - yay
+  - man-db
+  - less
+  - unzip
+  - lsof
+  - tree
+  - whois
+  - plocate
+  - ufw
+  - fontconfig
+  - noto-fonts
+  - noto-fonts-emoji
+
+# Development packages
+development_packages:
+  - git
+  - github-cli
+  - git-delta
+  - neovim
+  - vim
+  - docker
+  - docker-buildx
+  - docker-compose
+  - rust
+  - clang
+  - gcc14
+  - llvm
+  - mise
+  - tmux
+  - starship
+  - ripgrep
+  - fd
+  - fzf
+  - jq
+  - bat
+  - eza
+  - dust
+  - lazygit
+  - lazydocker
+  - gum
+  - tree-sitter-cli
+  - luarocks
+  - python-pynvim
+  - python-poetry-core
+  - tldr
+  - zoxide
+  - fastfetch
+  - mariadb-libs
+  - postgresql-libs
+  - btop
+  - ufw-docker
+
+# Desktop packages
+desktop_packages:
+  - hyprland
+  - hyprland-qtutils
+  - hypridle
+  - hyprlock
+  - hyprpicker
+  - hyprshot
+  - hyprsunset
+  - waybar
+  - mako
+  - walker-bin
+  - swaybg
+  - swayosd
+  - wl-clipboard
+  - wl-clip-persist
+  - wl-screenrec
+  - xdg-desktop-portal-hyprland
+  - xdg-desktop-portal-gtk
+  - alacritty
+  - 1password-beta
+  - 1password-cli
+  - obsidian
+  - roam
+  - prusa-slicer
+  - evince
+  - nautilus
+  - sushi
+  - gnome-calculator
+  - gnome-keyring
+  - gnome-themes-extra
+  - yaru-icon-theme
+  - mpv
+  - pipewire
+  - pipewire-alsa
+  - pipewire-jack
+  - pipewire-pulse
+  - playerctl
+  - pamixer
+  - imagemagick
+  - imv
+  - satty
+  - slurp
+  - wf-recorder
+  - flatpak
+  - cups
+  - cups-browsed
+  - cups-filters
+  - cups-pdf
+  - system-config-printer
+  - gvfs-mtp
+  - gvfs-smb
+  - uwsm
+  - plymouth
+  - polkit-gnome
+  - bash-completion
+  - noto-fonts-cjk
+  - noto-fonts-extra
+  - ttf-cascadia-mono-nerd
+  - ttf-ia-writer
+  - ttf-jetbrains-mono-nerd
+  - woff2-font-awesome
+  - ffmpegthumbnailer
+  - omarchy-chromium
+
+# Hardware-specific packages
+hardware_packages:
+  - nvidia-open-dkms
+  - nvidia-utils
+  - lib32-nvidia-utils
+  - libva-nvidia-driver
+  - egl-wayland
+  - power-profiles-daemon
+  - brightnessctl
+  - blueberry
+  - solaar
+  - gst-plugin-pipewire
+  - wireplumber
+  - qt5-wayland
+  - kvantum-qt5
+  - zram-generator
+  - fcitx5
+  - fcitx5-gtk
+  - fcitx5-qt
+  - python-gobject
+  - python-terminaltexteffects
+  - libpulse
+  - libqalculate
+  - nss-mdns
+  - inetutils
+  - tzupdate
+  - xmlstarlet
+  - xournalpp
+  - wiremix
+  - localsend-bin
+  - impala
+  - limine-snapper-sync
+
+# AUR packages
+aur_packages:
+  - asdcontrol-git
+  - droidcam
+  - iriunwebcam-bin
+  - neovim-remote
+  - slack-desktop
+  - stripe-cli
+
+# Optional heavy packages
+optional_packages:
+  - libreoffice-fresh
+  - obs-studio
+  - signal-desktop

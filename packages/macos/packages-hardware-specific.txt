@@ -1,0 +1,49 @@
+# Hardware-specific packages for macOS
+# These would be installed conditionally based on hardware/preferences
+
+# Audio production (if needed)
+# blackhole-2ch  # Audio routing
+
+# Input methods (for international users)
+# No fcitx5 - macOS has built-in input methods
+# Additional language packs via System Preferences
+
+# Development tools for specific hardware
+# ios-deploy  # For iOS development
+# xcodes  # Xcode version management
+
+# Virtualization (if needed)
+# parallels  # Commercial
+# vmware-fusion  # Commercial
+# utm  # Free alternative
+
+# Graphics and design (if needed)
+# sketch  # macOS native design tool
+# figma  # Available as web or desktop app
+
+# Logitech devices
+# logitech-options  # Logitech device management
+
+# External monitors and display management
+# resolution-changer
+# lunar  # Display brightness control for external monitors
+
+# Memory and performance optimization
+# No zram-generator - macOS handles memory differently
+# memory-cleaner  # Third-party memory management
+
+# Bluetooth and peripherals
+# bluetooth-screen-lock  # Security utility
+# karabiner-elements  # Keyboard customization
+
+# Typography and design fonts
+font-noto-sans-cjk
+font-noto-serif-cjk
+
+# Professional applications (casks)
+# prusa-slicer  # 3D printing
+# libreoffice  # Office suite alternative
+
+# Browsers (if not using Safari)
+# chromium
+# firefox

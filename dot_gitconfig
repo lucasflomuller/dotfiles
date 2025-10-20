@@ -1,0 +1,16 @@
+[user]
+	email = lucasflorianomuller@gmail.com
+	name = Lucas Muller
+	anem = Lucas Muller
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+[pull]
+	rebase = false
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

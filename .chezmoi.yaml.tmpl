@@ -1,0 +1,38 @@
+{{- $osID := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+sourceDir: {{ .chezmoi.sourceDir }}
+
+data:
+  name: "Lucas Muller"
+  email: "lucasflorianomuller@gmail.com"
+  github_username: "lucasflomuller"
+
+  # OS Detection
+  os: {{ .chezmoi.os | quote }}
+  arch: {{ .chezmoi.arch | quote }}
+  hostname: {{ .chezmoi.hostname | quote }}
+
+  # Platform-specific settings
+{{- if eq .chezmoi.os "linux" }}
+  package_manager: "pacman"
+  package_install_cmd: "sudo pacman -S --needed"
+  package_update_cmd: "sudo pacman -Syu"
+{{- else if eq .chezmoi.os "darwin" }}
+  package_manager: "brew"
+  package_install_cmd: "brew install"
+  package_update_cmd: "brew update && brew upgrade"
+{{- else }}
+  package_manager: "apt"
+  package_install_cmd: "sudo apt install -y"
+  package_update_cmd: "sudo apt update && sudo apt upgrade -y"
+{{- end }}
+
+  # Shell detection
+{{- if lookPath "zsh" }}
+  shell: "zsh"
+{{- else }}
+  shell: "bash"
+{{- end }}

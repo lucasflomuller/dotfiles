@@ -1,0 +1,7 @@
+# AUR packages (cleaned, no debug versions)
+asdcontrol-git
+droidcam
+iriunwebcam-bin
+neovim-remote
+slack-desktop
+stripe-cli

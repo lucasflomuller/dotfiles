@@ -1,0 +1,62 @@
+---
+# macOS package installation
+
+- name: "🍺 Ensure Homebrew is installed"
+  stat:
+    path: /opt/homebrew/bin/brew
+  register: homebrew_check
+
+- name: "🍺 Install Homebrew (Apple Silicon)"
+  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  when:
+    - not homebrew_check.stat.exists
+    - ansible_architecture == "arm64"
+
+- name: "🍺 Install Homebrew (Intel)"
+  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  when:
+    - not homebrew_check.stat.exists
+    - ansible_architecture == "x86_64"
+
+- name: "🏠 Install essential packages (macOS)"
+  homebrew:
+    name: "{{ essential_packages }}"
+    state: present
+  when: install_essential | default(true)
+
+- name: "🔧 Install development packages (macOS)"
+  homebrew:
+    name: "{{ development_packages }}"
+    state: present
+  when: install_development | default(false)
+
+- name: "🎨 Install desktop packages (macOS)"
+  homebrew:
+    name: "{{ desktop_packages }}"
+    state: present
+  when: install_desktop | default(false)
+
+- name: "🎨 Install font packages (macOS)"
+  homebrew:
+    name: "{{ font_packages }}"
+    state: present
+  when: install_desktop | default(false)
+
+- name: "⚙️ Install hardware-specific packages (macOS)"
+  homebrew:
+    name: "{{ hardware_packages }}"
+    state: present
+  when: install_hardware_specific | default(false)
+
+# GUI applications via casks
+- name: "🖥️ Install desktop applications (macOS Casks)"
+  homebrew_cask:
+    name: "{{ desktop_casks }}"
+    state: present
+  when: install_desktop | default(false)
+
+- name: "📱 Install Mac App Store CLI"
+  homebrew:
+    name: mas
+    state: present
+  when: install_essential | default(true)

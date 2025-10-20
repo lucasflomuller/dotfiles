@@ -1,0 +1,43 @@
+# macOS applications via Homebrew Casks
+# These are GUI applications that don't have CLI equivalents
+
+# Essential apps
+1password  # Password manager GUI
+signal  # Messaging
+obsidian  # Note-taking
+roam-research  # Note-taking alternative
+
+# Development
+cursor  # VS Code alternative (if desired)
+# docker  # Docker Desktop for Mac
+
+# Browsers (alternatives to Safari)
+firefox
+chromium
+
+# Office and productivity
+libreoffice
+
+# 3D printing
+prusa-slicer
+
+# Terminal alternatives
+iterm2  # Popular macOS terminal
+
+# Utilities
+the-unarchiver  # Archive extraction
+appcleaner  # App removal utility
+rectangle  # Window management (alternative to built-in)
+raycast  # Spotlight alternative (very popular on Mac)
+
+# Media
+vlc  # Alternative to mpv for GUI users
+
+# Design and graphics
+sketch  # macOS-native design tool
+figma  # Design collaboration
+
+# System utilities
+karabiner-elements  # Keyboard customization
+lunar  # Display brightness for external monitors
+stats  # System monitoring in menu bar

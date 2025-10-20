@@ -1,0 +1,50 @@
+# Hardware-specific packages - install conditionally based on hardware detection
+# GPU drivers
+nvidia-open-dkms
+nvidia-utils
+lib32-nvidia-utils
+libva-nvidia-driver
+egl-wayland
+
+# Power management (laptops)
+power-profiles-daemon
+brightnessctl
+
+# Bluetooth
+blueberry
+
+# Logitech devices
+solaar
+
+# Audio processing
+gst-plugin-pipewire
+wireplumber
+
+# Wayland/Qt
+qt5-wayland
+kvantum-qt5
+
+# Memory optimization
+zram-generator
+
+# Input methods (for CJK users)
+fcitx5
+fcitx5-gtk
+fcitx5-qt
+
+# Python tools
+python-gobject
+python-terminaltexteffects
+
+# Misc utilities
+libpulse
+libqalculate
+nss-mdns
+inetutils
+tzupdate
+xmlstarlet
+xournalpp
+wiremix
+localsend-bin
+impala
+limine-snapper-sync

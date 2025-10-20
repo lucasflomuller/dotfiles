@@ -1,0 +1,17 @@
+---
+- name: "📦 Package Installation Only"
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+  become: no
+
+  pre_tasks:
+    - name: "📦 Load OS-specific variables"
+      include_vars: "../vars/{{ ansible_distribution }}.yml"
+
+  roles:
+    - role: common
+      tags: ['common']
+
+    - role: packages
+      tags: ['packages']

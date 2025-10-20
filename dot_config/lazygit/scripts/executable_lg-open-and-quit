@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+file="$1"
+line="$2"
+
+# If a line number is passed, jump there
+if [ -n "$line" ]; then
+  nvr --remote-send "<C-\\><C-N>:execute 'drop ' . fnameescape(fnamemodify(\"$file\", \":p\")) | normal! ${line}G<CR>"
+else
+  nvr --remote-send "<C-\\><C-N>:execute 'drop ' . fnameescape(fnamemodify(\"$file\", \":p\"))<CR>"
+fi
+
+# Kill Lazygit only if the parent really is it
+pp=$(ps -o comm= $PPID 2>/dev/null || echo "")
+if echo "$pp" | grep -qi '^lazygit'; then
+  kill -TERM "$PPID" >/dev/null 2>&1 || true
+fi

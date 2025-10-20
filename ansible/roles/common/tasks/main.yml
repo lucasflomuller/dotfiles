@@ -1,0 +1,45 @@
+---
+# Common tasks that run on all platforms
+
+- name: "🔧 Ensure ~/bin directory exists"
+  file:
+    path: "{{ ansible_user_dir }}/bin"
+    state: directory
+    mode: '0755'
+
+- name: "🔧 Add ~/bin to PATH in shell profiles"
+  lineinfile:
+    path: "{{ item }}"
+    line: 'export PATH="$HOME/bin:$PATH"'
+    create: yes
+    state: present
+  loop:
+    - "{{ ansible_user_dir }}/.profile"
+    - "{{ ansible_user_dir }}/.bashrc"
+  when: ansible_system != "Darwin"
+
+- name: "🔧 Add ~/bin to PATH in macOS shell profiles"
+  lineinfile:
+    path: "{{ item }}"
+    line: 'export PATH="$HOME/bin:$PATH"'
+    create: yes
+    state: present
+  loop:
+    - "{{ ansible_user_dir }}/.zprofile"
+    - "{{ ansible_user_dir }}/.zshrc"
+  when: ansible_system == "Darwin"
+
+- name: "🔍 Check if chezmoi is already installed"
+  stat:
+    path: "{{ chezmoi_bin_path }}"
+  register: chezmoi_check
+
+- name: "📥 Install chezmoi"
+  shell: sh -c "$(curl -fsLS get.chezmoi.io)"
+  when: not chezmoi_check.stat.exists
+
+- name: "🔧 Ensure chezmoi is executable"
+  file:
+    path: "{{ chezmoi_bin_path }}"
+    mode: '0755'
+  when: chezmoi_check.stat.exists or not chezmoi_check.stat.exists

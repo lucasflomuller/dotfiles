@@ -1,0 +1,72 @@
+# Ignore cache directories and temporary files
+
+# Application cache directories
+**/*Cache*/
+**/*cache*/
+**/Cache/
+**/cache/
+
+# Browser data that shouldn't be synced
+**/chromium/Default/blob_storage/
+**/chromium/Default/File System/
+**/chromium/Default/IndexedDB/
+**/chromium/Default/Local Storage/
+**/chromium/Default/Session Storage/
+**/chromium/Default/Service Worker/
+**/chromium/Default/shared_proto_db/
+**/chromium/Default/Sync Data/
+**/chromium/Default/Site Characteristics Database/
+**/chromium/Default/Extension Rules/
+**/chromium/Default/Extension Scripts/
+
+# IDE and editor cache
+**/Cursor/Cache/
+**/Cursor/CachedData/
+**/Cursor/Code Cache/
+**/Cursor/logs/
+**/Cursor/GPUCache/
+**/Cursor/DawnWebGPUCache/
+**/Cursor/DawnGraphiteCache/
+**/Cursor/CachedProfilesData/
+**/Cursor/CachedExtensionVSIXs/
+**/Cursor/Local Storage/
+**/Cursor/Session Storage/
+**/Cursor/Shared Dictionary/cache/
+
+# Communication app data (too large/personal)
+.config/Slack/
+.config/Signal/
+
+# NVM installations (too large, install fresh)
+.config/nvm/
+
+# Roam Research data (personal/large)
+.config/Roam/
+
+# Netlify cache
+.config/netlify/
+
+# Typora cache
+**/Typora/Cache/
+**/Typora/Code Cache/
+**/Typora/Local Storage/
+**/Typora/Session Storage/
+**/Typora/GPUCache/
+
+# Log files
+**/*.log
+**/logs/
+**/Log/
+
+# Temporary files
+**/.tmp/
+**/tmp/
+**/*.tmp
+
+# OS specific files that shouldn't sync
+.DS_Store
+Thumbs.db
+
+# Git repositories (don't sync nested repos)
+**/nvm/**/.git/
+**/omarchy/**/.git/

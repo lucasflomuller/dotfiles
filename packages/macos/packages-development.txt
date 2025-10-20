@@ -1,0 +1,40 @@
+# Development tools for macOS
+git
+gh  # GitHub CLI equivalent
+git-delta
+neovim
+vim
+docker
+docker-buildx
+docker-compose
+rust
+llvm
+tmux
+starship
+ripgrep
+fd
+fzf
+jq
+bat
+eza
+dust
+lazygit
+lazydocker
+gum
+tree-sitter
+luarocks
+tldr
+zoxide
+fastfetch  # or 'neofetch' as alternative
+
+# System monitoring
+btop
+htop  # Alternative: top
+
+# Database libraries (if needed for development)
+mysql  # macOS equivalent of mariadb
+postgresql
+
+# Python tools for development
+python@3.12  # Latest Python
+pipx  # Python app installer

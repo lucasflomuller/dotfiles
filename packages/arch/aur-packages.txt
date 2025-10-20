@@ -1,0 +1,9 @@
+droidcam 1:2.1.4-1
+droidcam-debug 1:2.1.4-1
+iriunwebcam-bin 2.9-1
+neovim-remote 2.5.1-1
+roam 182.0.0.beta001-1
+slack-debug 3.0.3-1
+slack-desktop 4.45.69-1
+stripe-cli 1.30.0-1
+stripe-cli-debug 1.30.0-1

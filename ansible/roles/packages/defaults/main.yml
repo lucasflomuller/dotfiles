@@ -1,0 +1,17 @@
+---
+# Default variables for packages role
+
+# Package installation tiers
+install_essential: true
+install_development: false
+install_desktop: false
+install_hardware_specific: false
+install_optional: false
+
+# Package lists (will be overridden by OS-specific vars)
+essential_packages: []
+development_packages: []
+desktop_packages: []
+hardware_packages: []
+optional_packages: []
+aur_packages: []

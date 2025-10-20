@@ -1,0 +1,17 @@
+---
+# Default variables for common role
+
+# User settings
+dotfiles_user: "{{ ansible_user_id }}"
+dotfiles_home: "{{ ansible_user_dir }}"
+
+# Chezmoi settings
+chezmoi_repo: "https://github.com/lucasflomuller/dotfiles.git"
+chezmoi_bin_path: "{{ ansible_user_dir }}/bin/chezmoi"
+
+# Installation flags
+install_essential: true
+install_development: false
+install_desktop: false
+install_hardware_specific: false
+install_optional: false

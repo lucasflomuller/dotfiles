@@ -1,0 +1,14 @@
+---
+- name: "🏠 Dotfiles Management Only"
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+  become: no
+
+  pre_tasks:
+    - name: "📦 Load OS-specific variables"
+      include_vars: "../vars/{{ ansible_distribution }}.yml"
+
+  roles:
+    - role: dotfiles
+      tags: ['dotfiles']

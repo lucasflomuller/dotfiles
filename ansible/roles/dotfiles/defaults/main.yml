@@ -1,0 +1,7 @@
+---
+# Default variables for dotfiles role
+
+# Chezmoi configuration
+chezmoi_repo: "https://github.com/lucasflomuller/dotfiles.git"
+chezmoi_bin_path: "{{ ansible_user_dir }}/bin/chezmoi"
+chezmoi_source_dir: "{{ ansible_user_dir }}/.local/share/chezmoi"

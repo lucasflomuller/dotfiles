@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+# Shared aliases for both bash and zsh
+
+# Basic aliases
+{{- if eq .chezmoi.os "darwin" }}
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+{{- else }}
+alias ll='ls -alF --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'
+{{- end }}
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Bat aliases (better cat)
+alias cat='bat'
+alias bat='bat --paging=never'
+alias batl='bat --paging=always'
+alias batn='bat --style=plain'
+
+# Zoxide aliases (better cd)
+alias cd='z'
+alias cdi='zi'
+alias zz='z -'
+
+# Directory navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
+# Git aliases (useful for development)
+alias g='git'
+alias gs='git status'
+alias ga='git add'
+alias gaa='git add --all'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gp='git push'
+alias gl='git pull'
+alias glog='git log --oneline --graph --decorate'
+
+# System aliases
+alias c='clear'
+alias h='history'
+alias j='jobs -l'
+alias path='echo -e ${PATH//:/\\n}'
+alias now='date +"%T"'
+alias nowtime=now
+alias nowdate='date +"%d-%m-%Y"'
+
+# Package management (Arch specific)
+alias pacman='pacman --color=auto'
+alias pac='pacman'
+alias pacs='pacman -S'
+alias pacu='pacman -Syu'
+alias pacr='pacman -R'
+alias pacq='pacman -Q'
+alias pacqs='pacman -Qs'
+
+# Development aliases  
+alias tree='tree -C'
+alias df='df -h'
+alias du='du -h'
+alias free='free -h'
+
+# Node.js / npm aliases
+alias ni='npm install'
+alias nid='npm install --save-dev'
+alias nig='npm install -g'
+alias nrs='npm run start'
+alias nrd='npm run dev'
+alias nrb='npm run build'
+alias nrt='npm run test'
+
+# Make some commands safer
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Quick access to config files
+alias zshconfig='bat ~/.zshrc'
+alias zshreload='source ~/.zshrc'
+
+# WSL specific aliases
+alias winhome='cd /mnt/c/Users/lucas'
+alias winpath='cd /mnt/c'
+
+# Global Packages
+alias sls='serverless'
+
+# Remote connections
+alias joseph='ssh lucas@148.251.138.245'

@@ -1,0 +1,88 @@
+# ~/.zshrc - Zsh configuration
+
+# History settings
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
+# Auto-completion settings
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+
+# Basic zsh options
+setopt AUTO_CD
+setopt CORRECT
+setopt EXTENDED_GLOB
+setopt NO_CASE_GLOB
+setopt PROMPT_SUBST
+
+# Load colors
+autoload -U colors && colors
+
+# Simple prompt (you can customize this further)
+PROMPT='%{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}$ '
+
+# NVM setup
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Zoxide setup
+if [ -z "$DISABLE_ZOXIDE" ]; then
+  eval "$(zoxide init zsh)"
+fi
+
+# ====== ALIASES ======
+# Load shared aliases
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
+fi
+
+# Utility functions
+mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
+
+# Extract function for various archive formats
+extract() {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1     ;;
+            *.tar.gz)    tar xzf $1     ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar e $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xf $1      ;;
+            *.tbz2)      tar xjf $1     ;;
+            *.tgz)       tar xzf $1     ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)     echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+echo "🚀 Zsh with zoxide and bat loaded!"
+echo "💡 Try: z <dir>, bat <file>, or use any of the configured aliases"
+eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

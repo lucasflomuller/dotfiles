@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+file="$1"
+line="${2:-}"
+
+if [ -z "${NVIM:-}" ]; then
+  # not inside a Neovim-launched process → open a fresh nvim
+  if [ -n "$line" ]; then
+    exec nvim +${line} -- "$file"
+  else
+    exec nvim -- "$file"
+  fi
+else
+  # inside Neovim → send :drop to the CURRENT instance (no new tab)
+  if [ -n "$line" ]; then
+    nvim --server "$NVIM" --remote-send \
+      "<C-\\><C-N>:execute 'drop ' . fnameescape(fnamemodify('$file', ':p')) | normal! ${line}G<CR>"
+  else
+    nvim --server "$NVIM" --remote-send \
+      "<C-\\><C-N>:execute 'drop ' . fnameescape(fnamemodify('$file', ':p'))<CR>"
+  fi
+fi
+

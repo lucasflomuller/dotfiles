@@ -1,0 +1,45 @@
+# ~/.config/lazygit/config.yml
+gui:
+  # Theme customization
+  theme:
+    activeBorderColor:
+      - magenta
+      - bold
+    inactiveBorderColor:
+      - white
+    selectedLineBgColor:
+      - reverse
+  nerdFontsVersion: "3" # Use Nerd Fonts v3 icons if you have them installed
+  showIcons: true
+  mouseEvents: true
+  scrollHeight: 3
+
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+  commit:
+    signOff: false
+    autoWrapCommitMessage: true
+    autoWrapWidth: 72
+
+keybinding:
+  universal:
+    quit: q
+    return: <esc>
+  files:
+    commitChanges: c
+    commitChangesWithoutHook: C
+
+# Optional: Predefined custom commands
+customCommands:
+  - key: "P"
+    context: "localBranches"
+    description: "Push current branch"
+    command: "git push -u origin {{.SelectedLocalBranch.Name}}"
+    loadingText: "Pushing..."
+  - key: "F"
+    context: "localBranches"
+    description: "Force push current branch"
+    command: "git push -f origin {{.SelectedLocalBranch.Name}}"
+    loadingText: "Force pushing..."

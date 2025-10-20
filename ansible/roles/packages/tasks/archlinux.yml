@@ -1,0 +1,53 @@
+---
+# Arch Linux package installation
+
+- name: "🏠 Install essential packages (Arch Linux)"
+  community.general.pacman:
+    name: "{{ essential_packages }}"
+    state: present
+    update_cache: yes
+  become: yes
+  when: install_essential | default(true)
+
+- name: "🔧 Install development packages (Arch Linux)"
+  community.general.pacman:
+    name: "{{ development_packages }}"
+    state: present
+  become: yes
+  when: install_development | default(false)
+
+- name: "🎨 Install desktop packages (Arch Linux)"
+  community.general.pacman:
+    name: "{{ desktop_packages }}"
+    state: present
+  become: yes
+  when: install_desktop | default(false)
+
+- name: "⚙️ Install hardware-specific packages (Arch Linux)"
+  community.general.pacman:
+    name: "{{ hardware_packages }}"
+    state: present
+  become: yes
+  when: install_hardware_specific | default(false)
+
+- name: "📦 Install optional packages (Arch Linux)"
+  community.general.pacman:
+    name: "{{ optional_packages }}"
+    state: present
+  become: yes
+  when: install_optional | default(false)
+
+# AUR packages (requires yay or another AUR helper)
+- name: "🔍 Check if yay is installed"
+  command: which yay
+  register: yay_check
+  failed_when: false
+  changed_when: false
+
+- name: "📦 Install AUR packages"
+  command: yay -S --noconfirm {{ item }}
+  loop: "{{ aur_packages }}"
+  when:
+    - yay_check.rc == 0
+    - install_development | default(false)
+  become: no  # yay should not be run as root

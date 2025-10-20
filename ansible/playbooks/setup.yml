@@ -1,0 +1,49 @@
+---
+- name: "🚀 Cross-platform Development Environment Setup"
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+  become: no
+
+  vars:
+    should_become: "{{ false if ansible_pkg_mgr == 'brew' else true }}"
+
+  pre_tasks:
+    - name: "🔍 Display system information"
+      debug:
+        msg: |
+          Setting up {{ ansible_system }} ({{ ansible_distribution | default('Unknown') }})
+          for {{ ansible_user_id }}
+          Package manager: {{ ansible_pkg_mgr }}
+          Architecture: {{ ansible_architecture }}
+
+    - name: "📦 Load OS-specific variables"
+      include_vars: "../vars/{{ ansible_distribution }}.yml"
+
+  roles:
+    - role: common
+      tags: ['common', 'always']
+
+    - role: packages
+      tags: ['packages']
+
+    - role: dotfiles
+      tags: ['dotfiles']
+
+  post_tasks:
+    - name: "✅ Setup complete!"
+      debug:
+        msg: |
+          🎉 Development environment setup completed successfully!
+
+          Summary:
+          - OS: {{ os_name }}
+          - Package Manager: {{ package_manager }}
+          - Essential packages: {{ install_essential | ternary('✅ Installed', '❌ Skipped') }}
+          - Development packages: {{ install_development | ternary('✅ Installed', '❌ Skipped') }}
+          - Desktop packages: {{ install_desktop | ternary('✅ Installed', '❌ Skipped') }}
+          - Hardware-specific: {{ install_hardware_specific | ternary('✅ Installed', '❌ Skipped') }}
+          - Dotfiles: ✅ Applied with chezmoi
+
+          🔄 To update later, run: ansible-playbook playbooks/setup.yml
+          💻 Your development environment is ready!

@@ -1,0 +1,19 @@
+# Essential macOS packages via Homebrew
+# Core development and system tools that work across platforms
+
+# Package management
+mas  # Mac App Store CLI
+
+# System utilities
+tree
+unzip
+lsof
+whois
+plocate  # or 'locate' alternative: mlocate
+
+# Fonts (basic)
+font-noto-sans
+font-noto-emoji
+
+# Network tools
+tailscale

@@ -1,0 +1,21 @@
+---
+all:
+  hosts:
+    localhost:
+      ansible_connection: local
+      ansible_python_interpreter: "{{ ansible_playbook_python }}"
+
+      # User configuration
+      dotfiles_user: "{{ ansible_user_id }}"
+      dotfiles_home: "{{ ansible_user_dir }}"
+
+      # Chezmoi configuration
+      chezmoi_repo: "https://github.com/lucasflomuller/dotfiles.git"
+      chezmoi_bin_path: "{{ ansible_user_dir }}/bin/chezmoi"
+
+      # Package installation tiers (customize as needed)
+      install_essential: true
+      install_development: true
+      install_desktop: true
+      install_hardware_specific: false  # Set to true for full hardware setup
+      install_optional: false           # Set to true for heavy applications

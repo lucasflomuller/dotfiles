@@ -1,0 +1,36 @@
+---
+# Chezmoi dotfiles management
+
+- name: "🔍 Check if chezmoi source directory exists"
+  stat:
+    path: "{{ ansible_user_dir }}/.local/share/chezmoi"
+  register: chezmoi_source_check
+
+- name: "📥 Initialize chezmoi with dotfiles repository"
+  shell: "{{ chezmoi_bin_path }} init {{ chezmoi_repo }}"
+  environment:
+    PATH: "{{ ansible_user_dir }}/bin:{{ ansible_env.PATH }}"
+  when: not chezmoi_source_check.stat.exists
+
+- name: "🔄 Update chezmoi source (git pull)"
+  shell: "{{ chezmoi_bin_path }} update --no-apply"
+  environment:
+    PATH: "{{ ansible_user_dir }}/bin:{{ ansible_env.PATH }}"
+  when: chezmoi_source_check.stat.exists
+
+- name: "🏠 Apply dotfiles with chezmoi"
+  shell: "{{ chezmoi_bin_path }} apply"
+  environment:
+    PATH: "{{ ansible_user_dir }}/bin:{{ ansible_env.PATH }}"
+
+- name: "🔧 Verify chezmoi status"
+  shell: "{{ chezmoi_bin_path }} status"
+  environment:
+    PATH: "{{ ansible_user_dir }}/bin:{{ ansible_env.PATH }}"
+  register: chezmoi_status
+  changed_when: false
+
+- name: "📋 Display chezmoi status"
+  debug:
+    msg: "{{ chezmoi_status.stdout_lines }}"
+  when: chezmoi_status.stdout_lines | length > 0

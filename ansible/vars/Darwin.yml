@@ -1,0 +1,80 @@
+---
+# macOS (Darwin) package configuration
+os_name: "macOS"
+package_manager: "homebrew"
+
+# Package lists
+essential_packages:
+  - mas
+  - tree
+  - unzip
+  - lsof
+  - whois
+  - tailscale
+
+development_packages:
+  - git
+  - gh
+  - git-delta
+  - neovim
+  - vim
+  - docker
+  - docker-buildx
+  - docker-compose
+  - rust
+  - llvm
+  - tmux
+  - starship
+  - ripgrep
+  - fd
+  - fzf
+  - jq
+  - bat
+  - eza
+  - dust
+  - lazygit
+  - lazydocker
+  - gum
+  - tree-sitter
+  - luarocks
+  - tldr
+  - zoxide
+  - fastfetch
+  - btop
+  - htop
+  - mysql
+  - postgresql
+  - python@3.12
+  - pipx
+
+desktop_packages:
+  - alacritty
+  - mpv
+  - imagemagick
+  - ffmpeg
+
+# GUI applications (casks)
+desktop_casks:
+  - signal
+  - obsidian
+  - roam-research
+  - firefox
+  - chromium
+  - libreoffice
+  - prusa-slicer
+  - the-unarchiver
+  - raycast
+
+# Fonts
+font_packages:
+  - font-noto-sans
+  - font-noto-emoji
+  - font-cascadia-mono-nerd-font
+  - font-jetbrains-mono-nerd-font
+  - font-ia-writer-mono
+  - font-fontawesome
+
+# Hardware-specific (minimal on macOS)
+hardware_packages:
+  - karabiner-elements
+  - lunar
