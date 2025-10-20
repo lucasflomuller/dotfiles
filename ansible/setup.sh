@@ -147,10 +147,15 @@ main() {
     detect_os
     success "Detected OS: $DISTRO"
 
-    # Check if we're in the right directory
+    # Check if we're in the right directory, and change to ansible dir if needed
     if [[ ! -f "ansible.cfg" ]]; then
-        error "Please run this script from the ansible directory"
-        exit 1
+        if [[ -f "ansible/ansible.cfg" ]]; then
+            log "Changing to ansible directory..."
+            cd ansible
+        else
+            error "Cannot find ansible directory. Please run from repository root or ansible directory"
+            exit 1
+        fi
     fi
 
     # Install Ansible if not present
